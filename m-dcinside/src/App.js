@@ -1,10 +1,8 @@
-function App() {
-  return (
-    <div>
-      <h1>dgddg</h1>
-    </div>
+import Register from "./signup";
 
+export default function App() {
+  return (
+    <Register />
   );
 }
 
-export default App;
