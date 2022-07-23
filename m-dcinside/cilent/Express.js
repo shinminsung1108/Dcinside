@@ -1,11 +1,14 @@
-const port = 3001
+const signup = require('./Routes/Route_signup');
+const port = 3001;
 const mysql = require('mysql');
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
+const cors = require('cors');
+const bodyParser = require('body-parser')
 
 app.get('/', (req,res) => res.send('hello'));
 
-app.listen(port, () => console.log(`민성이의 포뚜번호눈? ${port}`))
+app.listen(port, () => console.log(`민성이의 포트번호? ${port}`))
 
 const con = mysql.createConnection({
     host: 'localhost',
@@ -25,3 +28,9 @@ con.connect(function(err) {
     })
 });
 
+app.use(cors())
+app.use(bodyParser.urlencoded({
+    extended : true
+}))
+app.use(bodyParser.json())
+app.use('/signup', signup)
